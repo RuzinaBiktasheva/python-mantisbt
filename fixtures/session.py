@@ -1,8 +1,7 @@
-class SessionHelper():
+class SessionHelper:
 
-    def __init__(self, app, base_url):
+    def __init__(self, app):
         self.app = app
-        self.base_url = base_url
 
     def login(self, username, password):
         wd = self.app.wd
@@ -18,7 +17,6 @@ class SessionHelper():
     def logout(self):
         wd = self.app.wd
         wd.find_element_by_link_text("Logout").click()
-        wd.get(self.base_url)
 
 # проверка аунтификации:
     def is_logged_in(self):
@@ -44,9 +42,10 @@ class SessionHelper():
 # проверка при аунтификации:
     def ensure_login(self, username, password):
         wd = self.app.wd
+        session_config = self.app.config['webadmin']
         if self.is_logged_in():
-            if self.is_logged_in_as(username):
+            if self.is_logged_in_as(session_config['username']):
                 return
             else:
                 self.logout()
-        self.login(username, password)
+        self.login(session_config['username'], session_config['password'])

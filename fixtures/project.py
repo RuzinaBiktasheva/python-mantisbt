@@ -2,11 +2,10 @@ from selenium.webdriver.support.ui import Select
 from models.project import Project
 
 
-class ProjectHelper():
+class ProjectHelper:
 
-    def __init__(self, app, base_url):
+    def __init__(self, app):
         self.app = app
-        self.base_url = base_url
 
     # заполнение полей
     def filling_fields(self, project):
