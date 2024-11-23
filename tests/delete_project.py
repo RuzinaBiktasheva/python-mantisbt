@@ -6,7 +6,7 @@ def test_delete_project_by_id(app):
         app.project.create(Project(name='Project_name_1', status = 'development', view_status = 'public', description = 'Description - 1'))
     app.project.delete_by_id('47')
     list_ui = app.project.get_project_list()
-    list_soap = app.soap.list_project_from_soap('administrator', 'root')
+    list_soap = app.soap.list_projects_from_soap('administrator', 'root')
     assert sorted(list_ui, key=Project.sort) == sorted(list_soap, key=Project.sort)
 
 # def test_delete_project_by_name(app):

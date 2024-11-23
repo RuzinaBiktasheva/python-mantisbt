@@ -13,7 +13,7 @@ class SoapHelper:
         except WebFault:
             return False
 
-    def list_project_from_soap(self,username, password):
+    def list_projects_from_soap(self,username, password):
         client = Client('http://localhost/mantisbt-1.2.20/api/soap/mantisconnect.php?wsdl')
         list = []
         try:
