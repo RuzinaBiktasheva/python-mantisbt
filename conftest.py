@@ -32,7 +32,7 @@ def app(request, config):
     browser = request.config.getoption('--browser')
     if fixture is None or not fixture.is_valid():
         fixture = Application(browser=browser, config=config)
-    #fixture.session.ensure_login(username=web_config_admin['username'], password=web_config_admin['password'])
+    fixture.session.ensure_login(username=web_config_admin['username'], password=web_config_admin['password'])
     return fixture
 
 # фикстура для ftp-соедения

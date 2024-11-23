@@ -14,3 +14,8 @@ class Project:
     # переопределенная стандартная функция сравнения
     def __eq__(self, other):
         return self.name == other.name and self.status == other.status and self.view_status == other.view_status and self.description == other.description
+
+    # сортировка
+    def sort(self):
+        if self.name:
+            return self.name
