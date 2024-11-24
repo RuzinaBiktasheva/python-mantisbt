@@ -4,9 +4,9 @@ from models.project import Project
 def test_delete_project_by_id(app):
     if app.project.count() == 0:
         app.project.create(Project(name='Project_name_1', status = 'development', view_status = 'public', description = 'Description - 1'))
-    app.project.delete_by_id('47')
+    app.project.delete_by_id('13')
     list_ui = app.project.get_project_list()
-    list_soap = app.soap.list_projects_from_soap('administrator', 'root')
+    list_soap = app.soap.list_projects_from_soap(app.config["webadmin"]["username"], app.config["webadmin"]["password"])
     assert sorted(list_ui, key=Project.sort) == sorted(list_soap, key=Project.sort)
 
 # def test_delete_project_by_name(app):
